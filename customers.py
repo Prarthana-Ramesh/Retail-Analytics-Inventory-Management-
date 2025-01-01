@@ -106,7 +106,7 @@ sns.barplot(x=total_sales.index, y=total_sales.values, palette="Blues_d")
 plt.title("Total Sales by Customer", fontsize=16)
 plt.xlabel("Customer", fontsize=12)
 plt.ylabel("Total Sales", fontsize=12)
-plt.xticks(rotation=45)
+plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
 
@@ -116,7 +116,7 @@ sns.barplot(x=avg_sales.index, y=avg_sales.values, palette="Oranges_d")
 plt.title("Average Sales by Customer", fontsize=16)
 plt.xlabel("Customer", fontsize=12)
 plt.ylabel("Average Sales", fontsize=12)
-plt.xticks(rotation=45)
+plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
 
@@ -128,6 +128,7 @@ plt.title("Sales Trend Over Time", fontsize=16)
 plt.xlabel("Order Date", fontsize=12)
 plt.ylabel("Sales", fontsize=12)
 plt.legend(title="Customer", fontsize=10)
+plt.xticks(rotation=90)
 plt.tight_layout()
 plt.show()
 
@@ -151,21 +152,23 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-# 6. High-Value Customers - Pie Chart
-plt.figure(figsize=(8, 8))
-plt.pie(high_value.values, labels=high_value.index, autopct="%1.1f%%", colors=sns.color_palette("pastel"))
-plt.title("High-Value Customers Share", fontsize=16)
-plt.tight_layout()
-plt.show()
+# # 6. High-Value Customers - Pie Chart
+# plt.figure(figsize=(8, 8))
+# plt.pie(high_value.values, labels=high_value.index, autopct="%1.1f%%", colors=sns.color_palette("pastel"))
+# plt.title("High-Value Customers Share", fontsize=16)
+# plt.tight_layout()
+# plt.show()
 
 # 7. Frequent Buyers - Horizontal Bar Chart
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(12, 10))  # Increased height to reduce overlap
 sns.barplot(y=frequent_buyers.index, x=frequent_buyers.values, palette="coolwarm")
 plt.title("Frequent Buyers by Number of Orders", fontsize=16)
 plt.xlabel("Number of Orders", fontsize=12)
 plt.ylabel("Customer", fontsize=12)
+plt.yticks(fontsize=8)  # Reduce font size of y-axis labels
 plt.tight_layout()
 plt.show()
+
 
 # 8. Order Frequency - Histogram
 plt.figure(figsize=(12, 6))
