@@ -80,7 +80,8 @@ results = {
     'Rank by Sales': rank_sales,
     'Rank by Profit': rank_profit,
     'Sales Rank by Category': sales_rank_by_category,
-    'Inactive Customers': inactive_customers,
+    'Inactive Customers': inactive_customers
+}
    
 
 # Export all results to an Excel file
