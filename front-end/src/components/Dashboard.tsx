@@ -14,10 +14,16 @@ import { BarChart3, Upload, TrendingUp } from 'lucide-react';
 export const Dashboard: React.FC = () => {
   const [data, setData] = useState<DataRow[]>([]);
   const [processor, setProcessor] = useState<DataProcessor | null>(null);
+  const [showDataset, setShowDataset] = useState(false);
 
   const handleDataLoad = (newData: DataRow[]) => {
     setData(newData);
     setProcessor(new DataProcessor(newData));
+  };
+
+  // Show dataset modal
+  const handleViewDataset = () => {
+    setShowDataset(true);
   };
 
   if (!processor || data.length === 0) {
@@ -83,13 +89,21 @@ export const Dashboard: React.FC = () => {
                 <p className="text-cyan-300 font-mono">{data.length.toLocaleString()} records analyzed</p>
               </div>
             </div>
-            <button
-              onClick={() => setData([])}
-              className="cyber-button px-4 py-2 rounded-lg transition-all flex items-center"
-            >
-              <Upload className="h-4 w-4 mr-2" />
-              Upload New Data
-            </button>
+            <div className="flex gap-4">
+              <button
+                onClick={handleViewDataset}
+                className="cyber-button px-4 py-2 rounded-lg transition-all flex items-center"
+              >
+                View Dataset
+              </button>
+              <button
+                onClick={() => setData([])}
+                className="cyber-button px-4 py-2 rounded-lg transition-all flex items-center"
+              >
+                <Upload className="h-4 w-4 mr-2" />
+                Upload New Data
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -120,6 +134,42 @@ export const Dashboard: React.FC = () => {
           <SubCategoryChart data={subCategoryData} />
         </div>
       </div>
+
+      {/* Dataset Modal */}
+      {showDataset && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+          <div className="bg-gray-900 rounded-xl p-8 max-w-3xl w-full overflow-auto relative">
+            <button
+              className="absolute top-4 right-4 text-cyan-400 hover:text-cyan-200 font-bold text-lg"
+              onClick={() => setShowDataset(false)}
+            >
+              ×
+            </button>
+            <h3 className="text-xl font-semibold text-cyan-300 mb-4">Dataset Preview</h3>
+            <div className="overflow-x-auto max-h-[60vh]">
+              <table className="min-w-full text-sm text-cyan-200 border border-cyan-500/30">
+                <thead>
+                  <tr>
+                    {data[0] && Object.keys(data[0]).map((key) => (
+                      <th key={key} className="px-3 py-2 border-b border-cyan-500/20 font-mono text-xs text-cyan-400">{key}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.slice(0, 20).map((row, idx) => (
+                    <tr key={idx}>
+                      {Object.values(row).map((val, i) => (
+                        <td key={i} className="px-3 py-2 border-b border-cyan-500/10 font-mono">{String(val)}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="mt-2 text-xs text-cyan-400">Showing first 20 rows</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
