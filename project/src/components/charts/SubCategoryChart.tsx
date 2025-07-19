@@ -19,10 +19,11 @@ export const SubCategoryChart: React.FC<SubCategoryChartProps> = ({ data }) => {
         <div>
           <h4 className="text-md font-medium text-cyan-300 mb-4 font-mono">Top Sub-Categories by Sales</h4>
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={topSubCategories} layout="horizontal">
+            <BarChart data={topSubCategories} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 255, 255, 0.2)" />
               <XAxis 
-                type="number" 
+                type="number"
+                dataKey="sales" 
                 tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
                 stroke="#00ffff"
                 fontSize={12}
@@ -61,10 +62,11 @@ export const SubCategoryChart: React.FC<SubCategoryChartProps> = ({ data }) => {
         <div>
           <h4 className="text-md font-medium text-cyan-300 mb-4 font-mono">Profit Margin by Sub-Category</h4>
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={topSubCategories} layout="horizontal">
+            <BarChart data={topSubCategories} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 255, 255, 0.2)" />
               <XAxis 
-                type="number" 
+                type="number"
+                dataKey="profitMargin" 
                 domain={['dataMin', 'dataMax']}
                 tickFormatter={(value) => `${value.toFixed(0)}%`}
                 stroke="#00ffff"

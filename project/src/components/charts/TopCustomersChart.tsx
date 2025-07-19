@@ -16,10 +16,11 @@ export const TopCustomersChart: React.FC<TopCustomersChartProps> = ({ data }) =>
       </div>
       
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={data} layout="horizontal">
+        <BarChart data={data} layout="vertical">
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 255, 255, 0.2)" />
           <XAxis 
             type="number" 
+            dataKey="totalSpend"
             tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
             stroke="#00ffff"
             fontSize={12}

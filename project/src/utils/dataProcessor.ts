@@ -39,8 +39,8 @@ export class DataProcessor {
 
     const spendingValues = Array.from(customerSpending.values());
     const avgSpending = spendingValues.reduce((a, b) => a + b, 0) / spendingValues.length;
-    const highSpendThreshold = avgSpending * 1.5;
-    const lowSpendThreshold = avgSpending * 0.5;
+    const highSpendThreshold = avgSpending * 1.1;
+    const lowSpendThreshold = avgSpending * 0.9;
 
     const segments = {
       'High Value': { customers: 0, totalSales: 0 },
