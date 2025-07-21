@@ -10,7 +10,12 @@ This project is built as part of a research initiative and is published in the *
 
 ## 🔗 Live Demo & Paper
 
-* **Live Web App**: [retail-analytics-inventory-manageme.vercel.app](https://retail-analytics-inventory-manageme.vercel.app/)
+* **Live Web App**: 
+
+    [New Dashboard](https://retail-analytics-inventory-manageme.vercel.app/)
+
+    [Old Dashboard](https://monishaa19.github.io/SalesAnalysis/)
+
 * **Published Research Paper**: [Retail Analysis and Inventory Management (IJSREM, Vol 09, Issue 02, Feb 2025)](https://ijsrem.com/download/retail-analysis-and-inventory-management/)
   **DOI**: [10.55041/IJSREM41644](https://doi.org/10.55041/IJSREM41644)
 
